@@ -13,6 +13,8 @@ var uglify = require('gulp-uglify');
 
 var path = {
   HTML: 'src/index.html',
+  SRC_NODE_MODULES: 'src/node_modules/*',
+  DEST_NODE_MODULES: 'node_modules',
   CSS: ['src/css/*.css', 'src/css/**/*.css'],
   FONTS: ['src/fonts/*.*', 'src/fonts/**/*.*'],
   OUT: 'build.js',
@@ -28,6 +30,9 @@ var path = {
 
 //--------------------------------------------------DEV-------------------//
 gulp.task('copyAndReplace', function(){
+  gulp.src(path.SRC_NODE_MODULES)
+    .pipe(debug())
+    .pipe(gulp.dest(path.DEST_NODE_MODULES));
   gulp.src(path.CSS)
     .pipe(debug())
     .pipe(gulp.dest(path.DEST_SRC_CSS));
@@ -81,6 +86,9 @@ gulp.task('default', ['watch','serve']);
 
 //--------------------------------------------------PROD------------------//
 gulp.task('copyAndReplaceProd', function(){
+  gulp.src(path.SRC_NODE_MODULES)
+    .pipe(debug())
+    .pipe(gulp.dest(path.DEST_NODE_MODULES));
   gulp.src(path.CSS)
     .pipe(debug())
     .pipe(gulp.dest(path.DEST_SRC_CSS));
