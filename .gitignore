@@ -1,3 +1,5 @@
+awsConfig.json
+gulp.log
 public
 src/*
 node_modules
