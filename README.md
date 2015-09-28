@@ -18,6 +18,7 @@ Your src dir should have the following files:
   js/main.jsx
   css/main.css
   docker/*
+  js.httpd.js comes with the boiler to provide a hello world backend load module
 
 Your index.html is used to bootstrap all your client-side js, css, and html.
 
@@ -34,4 +35,4 @@ It will watch for changes and reload everything.
 
 You should also have a docker file for the #YOURPROJECTNAME# directory and the src directory.
 You will need to build the top level first, then a build and run on the src should
-fire up a production container that will pull in, build, and run your project. 
+fire up a production container that will pull in, build, and run your project.
