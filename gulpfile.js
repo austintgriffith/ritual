@@ -121,7 +121,7 @@ gulp.task('build',['copyAndReplaceProd'], function(){
 gulp.task('daemon', function () {
   nodemon({
     script: path.SERVER
-  })
+  }).on('error', function(e) {console.log("ERROR:");console.log(e);});
 })
 
 gulp.task('prod', ['build','daemon']);
