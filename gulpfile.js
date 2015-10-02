@@ -119,10 +119,14 @@ gulp.task('build',['copyAndReplaceProd'], function(){
 });
 
 gulp.task('daemon', function () {
+  startNodemon();
+})
+
+function startNodemon(){
   nodemon({
     script: path.SERVER
-  }).on('error', function(e) {console.log("ERROR:");console.log(e);});
-})
+  }).on('crash', function(){ setTimeout(startNodemon,1000) } );
+}
 
 gulp.task('prod', ['build','daemon']);
 //------------------------------------------------------------------------//
