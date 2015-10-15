@@ -24,7 +24,7 @@ var path = {
   DEST_SRC_CSS: 'public/css',
   DEST_SRC_FONTS: 'public/fonts',
   ENTRY_POINT: './src/js/main.jsx',
-  LIVE_RELOAD_WATCH: ['public/*','public/**/*'],
+  LIVE_RELOAD_WATCH: ['public/**/*','public/*'],
   SERVER: './index.js'
 };
 
@@ -54,7 +54,7 @@ gulp.task('watch', ['copyAndReplace'],function() {
   gulp.watch(path.FONTS, ['copyAndReplace']);
 
   var watcher  = watchify(browserify({
-    entries: [path.ENTRY_POINT],
+    entries: [path.ENTRY_POINT,path.SERVER],
     transform: [reactify],
     debug: true,
     cache: {}, packageCache: {}, fullPaths: true
