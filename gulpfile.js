@@ -13,6 +13,7 @@ var uglify = require('gulp-uglify');
 
 var path = {
   HTML: 'src/index.html',
+  FAV: 'src/favicon.ico',
   SRC_NODE_MODULES: 'src/node_modules/*',
   DEST_NODE_MODULES: 'node_modules',
   CSS: ['src/css/*.css', 'src/css/**/*.css'],
@@ -39,6 +40,9 @@ gulp.task('copyAndReplace', function(){
   gulp.src(path.FONTS)
     .pipe(debug())
     .pipe(gulp.dest(path.DEST_SRC_FONTS));
+  gulp.src(path.FAV)
+    .pipe(debug())
+    .pipe(gulp.dest(path.DEST));
   gulp.src(path.HTML)
     .pipe(debug())
     .pipe(htmlreplace({
@@ -95,6 +99,9 @@ gulp.task('copyAndReplaceProd', function(){
   gulp.src(path.FONTS)
     .pipe(debug())
     .pipe(gulp.dest(path.DEST_SRC_FONTS));
+  gulp.src(path.FAV)
+    .pipe(debug())
+    .pipe(gulp.dest(path.DEST));
   gulp.src(path.HTML)
     .pipe(debug())
     .pipe(htmlreplace({
