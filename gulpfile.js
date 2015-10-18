@@ -10,6 +10,7 @@ var streamify = require('gulp-streamify');
 var gls = require('gulp-live-server');
 var nodemon = require('gulp-nodemon');
 var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
 
 var path = {
   HTML: 'src/index.html',
@@ -28,6 +29,13 @@ var path = {
   LIVE_RELOAD_WATCH: ['public/**/*','public/*'],
   SERVER: './index.js'
 };
+
+//used optionally 
+gulp.task('lint', function () {
+  gulp.src(['./index.js','./src/js/*'])
+    .pipe(jshint())
+    .pipe(jshint.reporter("default"));
+});
 
 //--------------------------------------------------DEV-------------------//
 gulp.task('copyAndReplace', function(){
