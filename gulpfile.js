@@ -30,7 +30,7 @@ var path = {
   SERVER: './index.js'
 };
 
-//used optionally 
+//used optionally
 gulp.task('lint', function () {
   gulp.src(['./index.js','./src/js/*'])
     .pipe(jshint())
@@ -54,7 +54,7 @@ gulp.task('copyAndReplace', function(){
   gulp.src(path.HTML)
     .pipe(debug())
     .pipe(htmlreplace({
-      'js': 'js/' + path.OUT,
+      'js': 'js/'+path.OUT,
       'live': '<script src="http://127.0.0.1:35729/livereload.js"></script>'
     }))
     .pipe(gulp.dest(path.DEST));
@@ -129,7 +129,7 @@ gulp.task('build',['copyAndReplaceProd'], function(){
     .bundle()
     .on('error',function(e){console.log('Browserify Error');console.log(e);})
     .pipe(source(path.MINIFIED_OUT))
-    .pipe(streamify(uglify(path.MINIFIED_OUT)))//gzip(
+    .pipe(streamify(uglify(path.MINIFIED_OUT).on('error', function(err){ console.log("UG ERROR:");console.log(err); })))//gzip(
     .pipe(gulp.dest(path.DEST_SRC_JS));
 });
 
