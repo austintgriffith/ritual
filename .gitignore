@@ -4,3 +4,4 @@ public
 src/*
 node_modules
 docker/package.json
+atgStart.txt
