@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Building and running atg...";
-cd atg;
 git pull;
 git status;
 cd docker;
