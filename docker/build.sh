@@ -18,4 +18,4 @@ else
     echo "package.json is unchanged.";
 fi
 echo "Building base ritual container...";
-docker build -t ritual:$1 .
+docker build -t ritual .
