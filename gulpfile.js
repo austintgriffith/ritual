@@ -10,9 +10,11 @@ var streamify = require('gulp-streamify');
 var gls = require('gulp-live-server');
 var nodemon = require('gulp-nodemon');
 var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
 
 var path = {
   HTML: 'src/index.html',
+  FAV: 'src/favicon.ico',
   SRC_NODE_MODULES: 'src/node_modules/*',
   DEST_NODE_MODULES: 'node_modules',
   CSS: ['src/css/*.css', 'src/css/**/*.css'],
@@ -24,9 +26,16 @@ var path = {
   DEST_SRC_CSS: 'public/css',
   DEST_SRC_FONTS: 'public/fonts',
   ENTRY_POINT: './src/js/main.jsx',
-  LIVE_RELOAD_WATCH: ['public/*','public/**/*'],
+  LIVE_RELOAD_WATCH: ['public/**/*','public/*'],
   SERVER: './index.js'
 };
+
+//used optionally
+gulp.task('lint', function () {
+  gulp.src(['./index.js','./src/js/*'])
+    .pipe(jshint())
+    .pipe(jshint.reporter("default"));
+});
 
 //--------------------------------------------------DEV-------------------//
 gulp.task('copyAndReplace', function(){
@@ -39,10 +48,13 @@ gulp.task('copyAndReplace', function(){
   gulp.src(path.FONTS)
     .pipe(debug())
     .pipe(gulp.dest(path.DEST_SRC_FONTS));
+  gulp.src(path.FAV)
+    .pipe(debug())
+    .pipe(gulp.dest(path.DEST));
   gulp.src(path.HTML)
     .pipe(debug())
     .pipe(htmlreplace({
-      'js': 'js/' + path.OUT,
+      'js': 'js/'+path.OUT,
       'live': '<script src="http://127.0.0.1:35729/livereload.js"></script>'
     }))
     .pipe(gulp.dest(path.DEST));
@@ -54,7 +66,7 @@ gulp.task('watch', ['copyAndReplace'],function() {
   gulp.watch(path.FONTS, ['copyAndReplace']);
 
   var watcher  = watchify(browserify({
-    entries: [path.ENTRY_POINT],
+    entries: [path.ENTRY_POINT,path.SERVER],
     transform: [reactify],
     debug: true,
     cache: {}, packageCache: {}, fullPaths: true
@@ -95,6 +107,9 @@ gulp.task('copyAndReplaceProd', function(){
   gulp.src(path.FONTS)
     .pipe(debug())
     .pipe(gulp.dest(path.DEST_SRC_FONTS));
+  gulp.src(path.FAV)
+    .pipe(debug())
+    .pipe(gulp.dest(path.DEST));
   gulp.src(path.HTML)
     .pipe(debug())
     .pipe(htmlreplace({
@@ -114,15 +129,19 @@ gulp.task('build',['copyAndReplaceProd'], function(){
     .bundle()
     .on('error',function(e){console.log('Browserify Error');console.log(e);})
     .pipe(source(path.MINIFIED_OUT))
-    .pipe(streamify(uglify(path.MINIFIED_OUT)))//gzip(
+    .pipe(streamify(uglify(path.MINIFIED_OUT).on('error', function(err){ console.log("UG ERROR:");console.log(err); })))//gzip(
     .pipe(gulp.dest(path.DEST_SRC_JS));
 });
 
 gulp.task('daemon', function () {
+  startNodemon();
+})
+
+function startNodemon(){
   nodemon({
     script: path.SERVER
-  })
-})
+  }).on('crash', function(){ setTimeout(startNodemon,1000) } );
+}
 
 gulp.task('prod', ['build','daemon']);
 //------------------------------------------------------------------------//
