@@ -1,3 +1,5 @@
+npm-debug*
+log.txt
 awsConfig.json
 gulp.log
 build
