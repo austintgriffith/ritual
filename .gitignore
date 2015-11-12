@@ -1,6 +1,6 @@
 awsConfig.json
 gulp.log
-public
+build
 src/*
 node_modules
 docker/package.json

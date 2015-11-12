@@ -30,8 +30,8 @@ RUN curl -sL https://deb.nodesource.com/setup | bash - && \
 ADD package.json /root/package.json
 RUN cd /root;npm install
 
-#install gulp globally
-RUN npm install gulp -g
+#install webpack globally
+RUN npm install webpack -g
 
 #port 22 for ssh
 EXPOSE 22
