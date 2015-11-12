@@ -6,7 +6,7 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-app.use(express.static('public'));
+app.use(express.static('build'));
 
 var serverFile = "./src/server.js";
 var server = require(serverFile);
