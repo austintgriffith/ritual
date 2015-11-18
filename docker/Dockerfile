@@ -33,6 +33,9 @@ RUN cd /root;npm install
 #install webpack globally
 RUN npm install webpack -g
 
+#install nodemon globally
+RUN npm install nodemon -g
+
 #port 22 for ssh
 EXPOSE 22
 

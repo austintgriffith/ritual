@@ -34,6 +34,6 @@ config.module.loaders.push({
 
 if(!config.plugins) config.plugins = [];
 config.plugins.push(new webpack.NoErrorsPlugin());
-
+config.plugins.push(new webpack.OldWatchingPlugin());
 
 module.exports = config;

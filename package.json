@@ -6,7 +6,7 @@
   "scripts": {
     "inject": "cd src/npm; npm install; cp -r node_modules/* ../../node_modules/",
     "dev": "webpack-dev-server --devtool eval --inline --hot --progress --colors --content-base build",
-    "build": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;node index.js",
+    "build": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;nodemon index.js",
     "anal": "sudo npm install -g webpack-bundle-size-analyzer;webpack --json | analyze-bundle-size"
   },
   "babel": {
@@ -37,6 +37,7 @@
     "jquery": "^2.1.4",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
+    "nodemon": "^1.8.1",
     "promise": "^7.0.4",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
