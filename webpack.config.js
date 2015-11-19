@@ -10,6 +10,8 @@ if(!config.entry) config.entry = [];
 config.entry.push("./src/index.html");
 config.entry.push("./src/css/main.css");
 config.entry.push("./src/js/main.js");
+//IDK IF I NEED THIS
+//config.entry.push("webpack-dev-server/client?http://localhost:44888");
 
 if(!config.module) config.module = {};
 if(!config.module.loaders) config.module.loaders = [];
