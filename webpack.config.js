@@ -14,6 +14,14 @@ config.entry.push("./src/js/main.js");
 //config.entry.push("webpack-dev-server/client?http://localhost:44888");
 
 if(!config.module) config.module = {};
+
+//if(!config.module.preLoaders) config.module.preLoaders = [];
+//config.module.preLoaders.push({
+//  test: /\.js$/, // include .js files
+//  exclude: /node_modules/, // exclude any and all files in the node_modules folder
+//  loader: "jshint-loader"
+//});
+
 if(!config.module.loaders) config.module.loaders = [];
 config.module.loaders.push({
     test: /\.html$/,

@@ -14,8 +14,8 @@ server.init(app,http);
 var port = 8000;
 if(server.port) port=server.port;
 
-var listener = http.listen(port, function () {
-  var host = listener.address().address;
+var listener = http.listen(port,'0.0.0.0', function () {
+  var host = '0.0.0.0';
   var port = listener.address().port;
   console.log('Server listening at http://%s:%s', host, port);
 });

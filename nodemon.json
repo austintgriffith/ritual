@@ -1,4 +1,4 @@
 {
   "verbose": true,
-  "ignore": ["*.txt","*.json","src/*.txt","src/*.json"]
+  "ignore": ["*.txt","*.json","src/*.txt","src/*.json","src/machines/code/*"]
 }
