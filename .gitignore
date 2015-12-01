@@ -7,3 +7,4 @@ build
 src/*
 node_modules
 docker/package.json
+*.txt
