@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "inject": "cd src/npm; npm install; cp -r node_modules/* ../../node_modules/",
-    "controller": "nodemon src/run.js",
     "test": "webpack-dev-server --devtool eval --inline --hot --progress --colors --content-base build",
     "start": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;nodemon index.js",
     "anal": "sudo npm install -g webpack-bundle-size-analyzer;webpack --json | analyze-bundle-size"
@@ -50,6 +49,6 @@
     "url-loader": "^0.5.6",
     "walk": "^2.3.9",
     "webpack": "^1.12.3",
-    "webpack-dev-server": "^1.12.1"
+    "webpack-dev-server": "^1.14.0"
   }
 }
