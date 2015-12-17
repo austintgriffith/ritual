@@ -15,12 +15,13 @@ config.entry.push("./src/js/main.js");
 
 if(!config.module) config.module = {};
 
-//if(!config.module.preLoaders) config.module.preLoaders = [];
-//config.module.preLoaders.push({
+if(!config.module.preLoaders) config.module.preLoaders = [];
+config.module.preLoaders.push({
+   test: /\.json$/, loader: 'json'
 //  test: /\.js$/, // include .js files
 //  exclude: /node_modules/, // exclude any and all files in the node_modules folder
 //  loader: "jshint-loader"
-//});
+});
 
 if(!config.module.loaders) config.module.loaders = [];
 config.module.loaders.push({
@@ -41,6 +42,7 @@ config.module.loaders.push({
     exclude: /node_modules/,
     loaders: ["react-hot", "babel"],
 });
+
 
 if(!config.plugins) config.plugins = [];
 config.plugins.push(new webpack.NoErrorsPlugin());
