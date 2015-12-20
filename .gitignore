@@ -3,3 +3,4 @@ gulp.log
 public
 src/*
 node_modules
+docker/package.json
