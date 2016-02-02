@@ -1,3 +1,4 @@
+*wsConfig.json
 *.pem
 store.json
 npm-debug*
