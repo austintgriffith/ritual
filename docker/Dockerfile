@@ -21,7 +21,7 @@ RUN chmod -R 0600 /root/.ssh;mkdir /var/run/sshd
 ADD sshd_config /etc/ssh/sshd_config
 
 # Node.js official repo & update NPM to latest
-RUN curl -sL https://deb.nodesource.com/setup | bash - && \
+RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - && \
     apt-get install -y nodejs && \
     npm install -g npm
 
@@ -30,8 +30,11 @@ RUN curl -sL https://deb.nodesource.com/setup | bash - && \
 ADD package.json /root/package.json
 RUN cd /root;npm install
 
-#install gulp globally
-RUN npm install gulp -g
+#install webpack globally
+RUN npm install webpack -g
+
+#install nodemon globally
+RUN npm install nodemon -g
 
 #port 22 for ssh
 EXPOSE 22

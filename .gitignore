@@ -1,6 +1,16 @@
+captain_*
+headproxy
+captain.git
+validation.json
+*wsConfig.json
+*.pem
+store.json
+npm-debug*
+log.txt
 awsConfig.json
 gulp.log
-public
+build
 src/*
 node_modules
 docker/package.json
+*.txt

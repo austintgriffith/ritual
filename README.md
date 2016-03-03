@@ -1,6 +1,6 @@
 # ritual
 
-This is my boilerplate for React + Browserify + Gulp + Docker
+This is my boilerplate for React + Webpack + Docker
 
 To use this, clone it to a folder named for your project.
 (git clone https://github.com/austintgriffith/ritual.git #YOURPROJECTNAME#)
