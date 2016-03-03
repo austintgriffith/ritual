@@ -45,3 +45,22 @@ npm test
 (this runs in a second window along with the npm start command.)
 
 You can now view your app at http://localhost:8080
+
+
+# docker
+
+First, you want to build the ritual base container:
+```
+cd docker; ./build.sh
+```
+
+Next, you want to build your project's container:
+```
+cd src/docker; ./build.sh
+```
+
+Finally, run your container:
+```
+cd src/docker; ./run.sh
+```
+(You can follow the logs with "Docker logs helloworld")
