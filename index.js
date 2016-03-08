@@ -3,11 +3,15 @@
 //
 //  it looks for a serverfile  as a module to pass the app to
 //
-
 var express = require('express');
 var app = express();
 var http = require('http').createServer(app);
 app.use(express.static('build'));
+var bodyParser = require("body-parser");
+app.use(bodyParser.raw())
+app.use(bodyParser.text())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 var serverFile = "./src/server.js";
 var server = require(serverFile);
