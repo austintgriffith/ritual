@@ -1,3 +1,4 @@
+*.log
 todo.json
 docker/package.json
 captain_*
