@@ -1,4 +1,4 @@
-FROM node
+FROM node:5
 MAINTAINER Austin Griffith <me@austingriffith.com>
 
 #PATCH BECAUSE OF: https://github.com/npm/npm/issues/9863
