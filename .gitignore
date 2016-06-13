@@ -1,3 +1,4 @@
+awsCredentialsMDF.json
 *.log
 todo.json
 docker/package.json
