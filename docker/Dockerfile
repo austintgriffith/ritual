@@ -13,13 +13,6 @@ RUN apt-get update -y;apt-get upgrade -y;apt-get install -y \
   build-essential ;
 RUN apt-get clean
 
-#get the ssh server going
-RUN mkdir /root/.ssh
-#add your public key to the local authorized_keys before running this so you can ssh into the machine!
-ADD authorized_keys /root/.ssh/authorized_keys
-RUN chmod -R 0600 /root/.ssh;mkdir /var/run/sshd
-ADD sshd_config /etc/ssh/sshd_config
-
 # Node.js official repo & update NPM to latest
 RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - && \
     apt-get install -y nodejs && \
@@ -35,9 +28,3 @@ RUN npm install webpack -g
 
 #install nodemon globally
 RUN npm install nodemon -g
-
-#port 22 for ssh
-EXPOSE 22
-
-#launch sshd
-CMD /usr/sbin/sshd -D
