@@ -1,25 +1,15 @@
-FROM ubuntu:14.04
+FROM node:5.10.1
 MAINTAINER Austin Griffith <me@austingriffith.com>
 
-# Install all the stuff for php and mysql plus some net junk
-RUN apt-get update -y;apt-get upgrade -y;apt-get install -y \
-  git \
-  openssh-server \
-  nano \
-  net-tools \
-  htop \
-  curl \
-  telnet \
-  build-essential ;
-RUN apt-get clean
+#PATCH BECAUSE OF: https://github.com/npm/npm/issues/9863
+RUN rm -rf /usr/local/lib/node_modules/npm \
+ && git clone https://github.com/DIREKTSPEED-LTD/npm /usr/local/lib/node_modules/npm \
+ && rm -rf /usr/local/lib/node_modules/npm/.git \
+ && rm -f  /usr/bin/npm \
+ && ln -s -f /usr/local/bin/npm /usr/bin/npm \
+ && cd /usr/local/lib/node_modules/npm \
+ && npm install
 
-# Node.js official repo & update NPM to latest
-RUN curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - && \
-    apt-get install -y nodejs && \
-    npm install -g npm
-
-#copy in the package json to the app directory to run the install
-# (this directory should be linked over with -v on run so you can live edit your code locally)
 ADD package.json /root/package.json
 RUN cd /root;npm install
 

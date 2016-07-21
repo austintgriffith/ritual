@@ -9,10 +9,7 @@ var app = express();
 var http = require('http').createServer(app);
 app.use(express.static('build'));
 var bodyParser = require("body-parser");
-app.use(bodyParser.raw())
-app.use(bodyParser.text())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser());
 
 var serverFile = "./src/server.js";
 var server = require(serverFile);
