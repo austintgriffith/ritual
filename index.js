@@ -7,7 +7,8 @@
 var express = require('express');
 var app = express();
 var http = require('http').createServer(app);
-app.use(express.static('build'));
+
+
 var bodyParser = require("body-parser");
 app.use(bodyParser());
 
@@ -16,6 +17,8 @@ var server = require(serverFile);
 server.init(app,http);
 var port = 8000;
 if(server.port) port=server.port;
+
+app.use(express.static('build'));
 
 var listener = http.listen(port,'0.0.0.0', function () {
   var host = '0.0.0.0';
