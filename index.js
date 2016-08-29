@@ -12,13 +12,17 @@ var http = require('http').createServer(app);
 var bodyParser = require("body-parser");
 app.use(bodyParser());
 
+//I need to do this before!
+app.use(express.static('build'));
+
+
 var serverFile = "./src/server.js";
 var server = require(serverFile);
 server.init(app,http);
 var port = 8000;
 if(server.port) port=server.port;
 
-app.use(express.static('build'));
+
 
 var listener = http.listen(port,'0.0.0.0', function () {
   var host = '0.0.0.0';
