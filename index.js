@@ -24,13 +24,14 @@ if (cluster.isMaster) {
     var bodyParser = require("body-parser");
     app.use(bodyParser());
 
-    app.use(express.static('build'));
+        app.use(express.static('build'));
 
     var serverFile = "./src/server.js";
     var server = require(serverFile);
     server.init(app,http);
     var port = 8000;
     if(server.port) port=server.port;
+
 
 
     var listener = http.listen(port,'0.0.0.0', function () {
