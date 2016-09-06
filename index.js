@@ -3,14 +3,14 @@
 //
 //  it looks for a serverfile  as a module to pass the app to
 //
-const cluster = require('cluster');
-const numCPUs = require('os').cpus().length;
+///const cluster = require('cluster');
+///const numCPUs = require('os').cpus().length;
 
 var express = require('express');
 var app = express();
 var http = require('http').createServer(app);
 
-if (cluster.isMaster) {
+/*if (cluster.isMaster) {
     // Fork workers.
     console.log("Forking into "+numCPUs+" workers...")
     for (var i = 0; i < numCPUs; i++) {
@@ -20,7 +20,7 @@ if (cluster.isMaster) {
     cluster.on('exit', (worker, code, signal) => {
         console.log(`worker ${worker.process.pid} died`);
     });
-} else {
+} else {*/
     var bodyParser = require("body-parser");
     app.use(bodyParser());
 
@@ -39,4 +39,4 @@ if (cluster.isMaster) {
       var port = listener.address().port;
       console.log('Server listening at http://%s:%s', host, port);
     });
-}
+//}
