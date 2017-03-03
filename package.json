@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "inject": "cd src/npm; npm install; cp -r node_modules/* ../../node_modules/",
-    "test": "sudo webpack-dev-server --host 0.0.0.0 --port 80 --devtool eval --inline --hot --progress --colors --content-base build",
+    "test": "webpack-dev-server --host 0.0.0.0 --port 8080 --devtool eval --inline --hot --progress --colors --content-base build",
+    "live": "sudo webpack-dev-server --host 0.0.0.0 --port 80 --devtool eval --inline --hot --progress --colors --content-base build",
     "start": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;nodemon index.js",
     "production": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;forever index.js",
     "anal": "sudo npm install -g webpack-bundle-size-analyzer;webpack --json | analyze-bundle-size"
