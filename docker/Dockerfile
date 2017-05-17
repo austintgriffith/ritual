@@ -18,3 +18,8 @@ RUN npm install webpack -g
 
 #install nodemon globally
 RUN npm install nodemon -g
+
+#install backports git for newer version
+RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+RUN apt-get update && \
+    apt-get -t jessie-backports install -y git
