@@ -1,4 +1,4 @@
 {
   "verbose": false,
-  "ignore": ["*.txt","*.json","src/*.txt","src/*.json","src/machines/**/*.*","headproxy/*"]
+  "ignore": ["*.txt","*.json","src/*.txt","src/*.json","src/machines/**/*.*","headproxy/*","node_modules/*","src/npm/node_modules/*"]
 }
