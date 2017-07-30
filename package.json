@@ -7,7 +7,8 @@
     "inject": "cd src/npm; npm install; cp -r node_modules/* ../../node_modules/",
     "test": "webpack-dev-server --host 0.0.0.0 --port 65080 --devtool eval --inline --hot --progress --colors --content-base build",
     "live": "sudo webpack-dev-server --host 0.0.0.0 --port 80 --devtool eval --inline --hot --progress --colors --content-base build",
-    "start": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;nodemon -L index.js",
+    "dev": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;nodemon -L index.js",
+    "start": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;pm2 start index.js;pm2 logs",
     "production": "env NODE_ENV=production webpack --profile --progress --colors --content-base build;forever index.js",
     "anal": "sudo npm install -g webpack-bundle-size-analyzer;webpack --json | analyze-bundle-size"
   },
@@ -48,6 +49,7 @@
     "lodash": "^4.17.4",
     "node-redis-pubsub": "^0.6.0",
     "nodemon": "^1.8.1",
+    "pm2": "^2.6.1",
     "promise": "^7.0.4",
     "react": "^15.2.1",
     "react-addons-update": "^15.2.1",
